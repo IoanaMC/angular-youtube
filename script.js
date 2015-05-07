@@ -21,4 +21,6 @@ myApp.controller('SimpleController', ['$scope', function($scope) {
     {name:'John', city:'Ar'},
     {name:'Doe', city:'En'}
   ];
+
+  $scope.addCustomer
 }]);
