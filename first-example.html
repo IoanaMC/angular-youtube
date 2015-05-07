@@ -4,15 +4,13 @@
     <title>Using AngularJS Directives and Data Binding</title>
   </head>
   <body>
-    <div ng-controller="SimpleController">
-      Name: <br/> <input type="text" ng-model="name" />{{name}}
-      <br/>
-      <ul>
-        <li ng-repeat="cust in customers | filter:name | orderBy:'city'">{{cust.name | uppercase }} - {{cust.city | lowercase }}</li>
-      </ul>
+    <div>
+      <!-- Placeholders for the Views -->
+      <div ng-view></div>
     </div>
 
     <script type="text/javascript" src="angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
   </body>
 </html>

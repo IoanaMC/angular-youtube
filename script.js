@@ -1,26 +1,32 @@
-var myApp = angular.module('myApp',[]);
+var myApp = angular.module('myApp', ['ngRoute']);
 
-myApp.config(function($routeProvider) {
+myApp.config(function ($routeProvider) {
   $routeProvider
-    .when('/',
+    .when('/view1',
       {
         controller: 'SimpleController',
         templateUrl: 'partials/View1.html'
       })
-    .when ('/partial2',
+    .when ('/view2',
       {
         controller: 'SimpleController',
         templateUrl: 'partials/View2.html'
       })
-    .otherwise({ redirectTo: '/'});
+    .otherwise({ redirectTo: '/view1'});
 });
 
-myApp.controller('SimpleController', ['$scope', function($scope) {
+myApp.controller('SimpleController', function($scope) {
   $scope.customers = [
     {name:'Joe', city:'Bo'},
     {name:'John', city:'Ar'},
     {name:'Doe', city:'En'}
   ];
 
-  $scope.addCustomer
-}]);
+  $scope.addCustomer = function() {
+    $scope.customers.push(
+      {
+        name: $scope.newCustomer.name,
+        city: $scope.newCustomer.city
+      });
+  }
+});
