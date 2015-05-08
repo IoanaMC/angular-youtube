@@ -15,12 +15,33 @@ myApp.config(function ($routeProvider) {
     .otherwise({ redirectTo: '/view1'});
 });
 
-myApp.controller('SimpleController', function($scope) {
-  $scope.customers = [
+myApp.factory('simpleFactory', function(){
+  var customers = [
     {name:'Joe', city:'Bo'},
     {name:'John', city:'Ar'},
     {name:'Doe', city:'En'}
   ];
+
+  var factory = {};
+  factory.getCustomers = function() {
+    return customers;
+  };
+
+  factory.postCustomer = function(customer) {
+
+  };
+
+  return factory;
+});
+
+myApp.controller('SimpleController', function($scope, simpleFactory) {
+  $scope.customers = [];
+
+  init();
+
+  function init() {
+    $scope.customers = simpleFactory.getCustomers();
+  }
 
   $scope.addCustomer = function() {
     $scope.customers.push(
